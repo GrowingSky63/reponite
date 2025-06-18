@@ -15,7 +15,7 @@ def main():
         
         print("Iniciando servidor do Reponite")
         
-        # Inicia o servidor em todos os ips da máquina, usando a porta 5000
+        # Inicia o servidor em todos os ips da máquina, usando a porta 3131
         app.run(
             host='0.0.0.0',
             port=3131,

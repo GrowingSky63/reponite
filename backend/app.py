@@ -34,7 +34,7 @@ def skins():
                 skins_to_return = SKINS
 
                 if 'id' in args:
-                    skin_id.strip()
+                    skin_id.strip() # type: ignore
                     return {"status": 200, "data": [skin for skin in SKINS if skin['id'] == skin_id][0]}, 200
                 
                 if 'limit' in args:
@@ -42,7 +42,7 @@ def skins():
                         return {"error": "Limit must be between 1 and 100."}, 400
                 
                 if 'type' in args:
-                    skin_type = request.args.get('type').strip().lower()
+                    skin_type = request.args.get('type').strip().lower() # type: ignore
                     skins_to_return = [skin for skin in SKINS if skin['type']['value'].lower() == skin_type]
                 
                 skin_count = len(skins_to_return)
@@ -85,8 +85,8 @@ def shop():
                 args = request.args.to_dict().keys()
                 page = int(request.args.get('page', 1))
                 limit = int(request.args.get('limit', 10))
-                shop_to_return = SHOP['entries']
-                shop_date = SHOP['date']
+                shop_to_return = SHOP['entries'] # type: ignore
+                shop_date = SHOP['date'] # type: ignore
                 
                 if 'limit' in args:
                     if limit < 1 or limit > 100:

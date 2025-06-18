@@ -1,7 +1,6 @@
 import DevCard from '../components/DevCard';
 
 export default function Home() {
-  // Dados dos desenvolvedores
   const developers = [
     {
       name: "Eric Verschoor",
@@ -47,7 +46,6 @@ export default function Home() {
       </div>
 
       <div className="row g-4">
-        {/* Seção Skins */}
         <div className="col-md-6">
           <div className="card h-100 shadow-sm">
             <div className="card-body d-flex flex-column">
@@ -90,7 +88,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Seção Shop */}
         <div className="col-md-6">
           <div className="card h-100 shadow-sm">
             <div className="card-body d-flex flex-column">
@@ -134,7 +131,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Seção de informações adicionais */}
       <div className="row mt-5">
         <div className="col-12">
           <div className="card bg-light">
@@ -168,7 +164,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Seção da Equipe de Desenvolvimento */}
       <div className="row mt-5">
         <div className="col-12 text-center mb-4">
           <h2 className="text-primary">Nossa Equipe</h2>
