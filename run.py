@@ -18,7 +18,7 @@ def main():
         # Inicia o servidor em todos os ips da máquina, usando a porta 5000
         app.run(
             host='0.0.0.0',
-            port=5000,
+            port=3131,
             debug=False,
             threaded=True
         )
