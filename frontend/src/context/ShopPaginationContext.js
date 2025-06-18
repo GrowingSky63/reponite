@@ -12,7 +12,7 @@ export function ShopPaginationProvider({ children }) {
   const changePage = async (page) => {
     try {
       setLoading(true);
-      const response = await fetch(`http://192.168.3.122:5000/api/v1/shop?page=${page}&limit=${limit}`);
+      const response = await fetch(`/api/v1/shop?page=${page}&limit=${limit}`);
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

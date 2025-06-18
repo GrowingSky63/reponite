@@ -4,11 +4,13 @@ import Home from './sections/Home';
 import Skins from './sections/Skins';
 import Shop from './sections/Shop';
 import Header from './components/Header';
-import { SkinPaginationProvider } from './context/SkinPaginationContext';
+import { SkinPaginationProvider } from './context/SkinsPaginationContext';
+import { ShopPaginationProvider } from "./context/ShopPaginationContext";
 
 function App() {
   return (
     <SkinPaginationProvider>
+      <ShopPaginationProvider>
       <div className="App">
         <Router>
           <Header />
@@ -19,6 +21,7 @@ function App() {
           </Routes>
         </Router>
       </div>
+      </ShopPaginationProvider>
     </SkinPaginationProvider>
   );
 }
