@@ -7,7 +7,7 @@ export function ShopPaginationProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [maxPage, setMaxPage] = useState(1);
-  const [limit] = useState(10);
+  const [limit] = useState(20);
 
   const changePage = async (page) => {
     try {
