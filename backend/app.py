@@ -1,11 +1,12 @@
 from flask import Flask, request
-import traceback, requests
-from .get_skins import get_skins
+import traceback
+from .get_repository import get_skins, get_shop
 
 # Definindo qual pasta deve ser servida ao cliente (tudo que o react construir, poderá ser servido ao cliente)
 app = Flask(__name__, static_folder='../frontend/build', static_url_path='/')
 
 SKINS: list = get_skins()
+SHOP: list = get_shop()
 
 # Fornecer rotas para o react
 @app.errorhandler(404)
@@ -66,6 +67,37 @@ def skins_types():
             case 'GET':
                 skin_types = list({skin['type']['value'] for skin in SKINS})
                 return {"status": 200, "data": skin_types}, 200
+                
+
+            case _:
+                raise NotImplementedError("Método não implementado")
+    except Exception as e:
+        traceback.print_exc()
+        return {"status": 500, "data": "Internal server error"}, 500
+    
+@app.route('/api/v1/shop', methods=['GET'])
+def shop():
+    try:
+        # Verificação do tipo do método HTTP
+        match request.method:
+            case 'GET':
+                # Obtendo os parâmetros selecionados
+                args = request.args.to_dict().keys()
+                page = int(request.args.get('page', 1))
+                limit = int(request.args.get('limit', 10))
+                shop_to_return = SHOP['entries']
+                shop_date = SHOP['date']
+                
+                if 'limit' in args:
+                    if limit < 1 or limit > 100:
+                        return {"error": "Limit must be between 1 and 100."}, 400
+                
+                shop_count = len(shop_to_return)
+                start = (page - 1) * limit
+                end = start + limit
+                max_page = (shop_count // limit) + (1 if shop_count % limit > 0 else 0)
+
+                return {"status": 200, "page": page, "limit": limit, "max_page": max_page, "shop_date": shop_date, "data": shop_to_return[start:end]}, 200
                 
 
             case _:
