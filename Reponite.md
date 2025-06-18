@@ -2,6 +2,9 @@
 
 Uma aplicação web para explorar skins e itens da loja do Fortnite, desenvolvida com React no frontend e Flask no backend.
 
+## Apresentação:
+ - https://youtu.be/NMd_MbzN1Ro
+
 ## 📋 Pré-requisitos
 
 ### Para execução sem Docker:
